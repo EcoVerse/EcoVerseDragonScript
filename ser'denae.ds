@@ -1,0 +1,69 @@
+DSPK V04.00 Furcadia
+
+(0:0) When everything is starting up,
+            (5:212) set silent speech prefix (for spoken commands) to {*}
+            (5:300) set variable %lockdown to the value 1.
+            (5:122) treat all regions numbered 50 and higher as 'indoors', and only show furres there what's in that region.
+            (5:125) show bottom walls outdoors only.
+            (5:128) show top walls indoors only.
+            (5:142) show floor 500 in outdoor regions where floors are hidden, instead of what's really there.
+            (5:146) show floor 500 in indoor regions where floors are hidden, instead of what's really there.
+
+(0:9) When a furre arrives in the dream,
+            (5:15) move the triggering furre to (142,145), or to someplace nearby if it's occupied.
+         (4:30) only in region 1,
+            (5:146) show floor 0 in indoor regions where floors are hidden, instead of what's really there.
+         (4:0) clear all filtering,
+         (4:32) only in regions 50 through 53,
+            (5:146) show floor 500 in indoor regions where floors are hidden, instead of what's really there.
+
+
+*Forest Dens*
+
+
+(0:7) When somebody moves into position (134,154),
+            (5:15) move the triggering furre to (132,184), or to someplace nearby if it's occupied.
+(0:7) When somebody moves into position (132,184),
+            (5:15) move the triggering furre to (134,154), or to someplace nearby if it's occupied.
+(0:7) When somebody moves into position (162,155),
+            (5:15) move the triggering furre to (146,186), or to someplace nearby if it's occupied.
+(0:7) When somebody moves into position (146,186),
+            (5:15) move the triggering furre to (162,155), or to someplace nearby if it's occupied.
+(0:7) When somebody moves into position (134,137),
+            (5:15) move the triggering furre to (140,185), or to someplace nearby if it's occupied.
+(0:7) When somebody moves into position (140,185),
+            (5:15) move the triggering furre to (134,137), or to someplace nearby if it's occupied.
+(0:7) When somebody moves into position (118,150),
+            (5:15) move the triggering furre to (152,183), or to someplace nearby if it's occupied.
+(0:7) When somebody moves into position (152,183),
+            (5:15) move the triggering furre to (118,150), or to someplace nearby if it's occupied.
+(0:3) When somebody moves into object type 11,
+            (5:50) set countdown timer 1 to go off in 10 seconds.
+(0:50) When countdown timer 1 goes off,
+            (5:19) move any furre present 2 step(s) forward (in the direction they're facing) if there's nobody already there.
+ 
+(0:31) When a furre says {*lockdownon},
+   (1:10) and the triggering furre is the dream owner,
+            (5:204) emitloud message {<b>Dream on lockdown.</b>} to everyone on the map.
+            (5:300) set variable %lockdown to the value 1.
+ 
+(0:31) When a furre says {*lockdownoff},
+   (1:10) and the triggering furre is the dream owner,
+            (5:204) emitloud message {<b>Dream no longer on lockdown.</b>} to everyone on the map.
+            (5:300) set variable %lockdown to the value 0.
+
+(0:31) When a furre says {*lfforest},
+            (5:15) move the triggering furre to (142,145), or to someplace nearby if it's occupied.
+(0:31) When a furre says {*city},
+            (5:15) move the triggering furre to (92,177), or to someplace nearby if it's occupied.
+
+(0:9) When a furre arrives in the dream,
+   (1:200) and variable %lockdown is equal to 1,
+   (1:111) and the triggering furre hasn't got shared control (and is not the dream owner),
+   (1:170) and the triggering furre's name is not {EcoVerse},
+   (1:170) and the triggering furre's name is not {AzKai},
+   (1:191) and the triggering furre's entry method was not 2 (One=dream portal, Two=summoned in, Three=dream url),
+         (5:200) emit message {We're sorry friend, but EcoVerse is <b>currently in test mode only</b>! Instead, here's <a href="http://ecover.se">more information</a> or you can <a href="http://www.ecover.se/staff/join.php">apply to staff</a> and <a href="http://ecoverse.deviantart.com">watch our dA</a>!} to the triggering furre.
+            (5:78) eject the triggering furre.
+
+*Endtriggers* 8888 *Endtriggers*
